@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://bkjwy8w73ypat"]
+[gd_scene load_steps=53 format=4 uid="uid://bkjwy8w73ypat"]
 
 [ext_resource type="PackedScene" uid="uid://bv67o8i2x6hj5" path="res://Characters/player_cat.tscn" id="1_5xnk3"]
 [ext_resource type="Script" path="res://Levels/game_level.gd" id="1_j32c2"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bvin6ofn3n17c" path="res://Art/Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Tilesets/Fences.png" id="10_cpj5n"]
 [ext_resource type="Texture2D" uid="uid://drwmhkuho8otr" path="res://Art/Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Tilesets/Tilled_Dirt_Wide.png" id="11_7q2tr"]
 [ext_resource type="PackedScene" uid="uid://b3b31g8odud85" path="res://Interactive Objects/door.tscn" id="13_m3mnh"]
+[ext_resource type="Texture2D" uid="uid://bktlokd43rrn0" path="res://Art/Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Objects/Free_Chicken_House.png" id="16_t215h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vjd80"]
 texture = ExtResource("2_1d5rn")
@@ -851,6 +852,43 @@ texture = ExtResource("8_6ey1g")
 [sub_resource type="TileSet" id="TileSet_hi2xm"]
 sources/0 = SubResource("TileSetAtlasSource_cybid")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p2snq"]
+texture = ExtResource("16_t215h")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.0220966, -0.0441942, 8, -0.0883884, 8, 8, 0.0220966, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -0.0883884, -8, -0.0883884, -8, 8, 8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.0220966, -0.0441942, -8, -0.0883884, -8, 8, -0.0220966, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.0220976, -8, 8, -8, 8, 4.02167, 3.0715, 4.06586, 0.0220966, -1.5026)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 3.88909, 3.99957, 3.88909, 4.04377, 8, -4.08796, 8, -4.17635, 4.02167, -8, 3.97748)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.0220976, -8, -8, -8, -8, 4.02167, -3.0715, 4.06586, -0.0220966, -1.5026)
+
+[sub_resource type="TileSet" id="TileSet_yii5i"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_p2snq")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ltt0t"]
+texture = ExtResource("16_t215h")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_6q6km"]
+sources/0 = SubResource("TileSetAtlasSource_ltt0t")
+
 [node name="GameLevel" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_j32c2")
@@ -943,6 +981,17 @@ position = Vector2(712, 152)
 z_index = 1
 tile_map_data = PackedByteArray("AAAxABYAAAAGAAEAAAA6ABAAAAAGAAEAAAAdABIAAAAGAAEAAAAcAA8AAAAGAAMAAAAYABAAAAAGAAEAAAAZABEAAAAGAAMAAAAwAA4AAAAGAAMAAAAzAAwAAAAGAAIAAAAZAB8AAAAGAAEAAAAgAB8AAAAGAAEAAAAzABcAAAAGAAIAAAA2ABwAAAAGAAIAAAAhACEAAAAGAAMAAAA3ABAAAAAHAAMAAAAxABIAAAAHAAMAAAA1ABQAAAAHAAMAAAA1ABIAAAAGAAMAAAAlAAcAAAAHAAIAAAAiAAgAAAAGAAIAAAAmAAUAAAAGAAIAAAAYAA4AAAAGAAMAAAAhABIAAAAGAAIAAAAtACAAAAAGAAMAAAA3ABcAAAAHAAIAAAA=")
 tile_set = SubResource("TileSet_hi2xm")
+
+[node name="ChickenCoop" type="TileMapLayer" parent="."]
+z_index = 1
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAZABcAAAAAAAEAAAAZABgAAAAAAAIAAAAaABcAAAABAAEAAAAaABgAAAABAAIAAAAbABcAAAACAAEAAAAbABgAAAACAAIAAAAdABcAAAAAAAEAAAAdABgAAAAAAAIAAAAeABcAAAABAAEAAAAeABgAAAABAAIAAAAfABcAAAACAAEAAAAfABgAAAACAAIAAAA=")
+tile_set = SubResource("TileSet_yii5i")
+
+[node name="ChickenCoopRoof" type="TileMapLayer" parent="ChickenCoop"]
+z_index = 2
+tile_map_data = PackedByteArray("AAAdABYAAAAAAAAAAAAeABYAAAABAAAAAAAfABYAAAACAAAAAAAZABYAAAAAAAAAAAAaABYAAAABAAAAAAAbABYAAAACAAAAAAA=")
+tile_set = SubResource("TileSet_6q6km")
 
 [connection signal="body_entered" from="House/PlayerDetector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="House/PlayerDetector" to="." method="_on_player_detector_body_exited"]
